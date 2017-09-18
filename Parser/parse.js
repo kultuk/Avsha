@@ -92,6 +92,19 @@ function parse(input) {
         }
         return ret;
     }
+    function parse_while() {
+        skip_kw("כלעוד");
+        
+        var cond = parse_expression();
+        if (!is_punc("{")) skip_kw("אז");
+        var body = parse_expression();
+        var ret = {
+            type: "for",
+            cond: cond,
+            body: body,
+        };
+        return ret;
+    }
     function parse_method() {
         return {
             type: "method",
