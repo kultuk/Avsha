@@ -9,6 +9,7 @@ This is a scripting language in hebrew that is destined to help kids to know how
 
 `
 משתנה א.
+
 משתנה ב שווה 4.
 `
 
