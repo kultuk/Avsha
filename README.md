@@ -8,8 +8,9 @@ This is a scripting language in hebrew that is destined to help kids to know how
 ###variable declaration:
 
 `
-משתנה א.
+משתנה א`
 
+`
 משתנה ב שווה 4.
 `
 
@@ -17,21 +18,24 @@ This is a scripting language in hebrew that is destined to help kids to know how
 
 `
 אם משתנה שווה 5 אז
-	עשה_משהו().
-אחרת
-	עשה_משהו_אחר().
 `
+`	עשה_משהו().`
+`אחרת`
+	`עשה_משהו_אחר().`
+
 
 ###while loop:
 
 `
 כלעוד בדיקת_אמת() אז
-	עשה_משהו();
-`
+`	`עשה_משהו();`
+
 
 ###function declaration:
 
 `
 מבצע הקש_בדלת():
-	הדפס("טוק טוק").
+`
+`
+הדפס("טוק טוק").
 `
