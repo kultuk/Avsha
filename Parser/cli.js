@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 const avsha = require('./avsha');
 
 process.stdin.setEncoding("utf16le");
