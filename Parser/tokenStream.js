@@ -1,6 +1,6 @@
 function TokenStream(input) {
     var current = null;
-    var keywords = ["אם", "אז", "מבצע", "אמת", "שקר" ,  "עבור", "כלעוד", "מש"];
+    var keywords = ["אם", "אז", "אחרת", "מבצע", "אמת", "שקר",  "עבור", "כלעוד", "מש"];
     return {
         next  : next,
         peek  : peek,
@@ -14,16 +14,18 @@ function TokenStream(input) {
         return /[0-9]/i.test(ch);
     }
     function is_id_start(ch) {
-        return /מש/i.test(ch);
+        // return /מש/i.test(ch);
+        return /[א-ת]/i.test(ch);
     }
     function is_id(ch) {
-        return is_id_start(ch);
+        // return is_id_start(ch) || /[א-ת]/i.test(ch);
+        return /[א-ת]/i.test(ch);
     }
     function is_op_char(ch) {
         return "+-*/%=&|<>!".indexOf(ch) >= 0;
     }
     function is_punc(ch) {
-        return ",;(){}[]".indexOf(ch) >= 0;
+        return ".,;(){}[]".indexOf(ch) >= 0;
     }
     function is_whitespace(ch) {
         return " \t\n".indexOf(ch) >= 0;
@@ -97,7 +99,7 @@ function TokenStream(input) {
             type  : "op",
             value : read_while(is_op_char)
         };
-        input.croak("לא מכיר את : " + ch);
+        input.croak("never head of : " + ch);
     }
     function peek() {
         return current || (current = read_next());
@@ -111,3 +113,4 @@ function TokenStream(input) {
         return peek() == null;
     }
 }
+module.exports = TokenStream;
