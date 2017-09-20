@@ -23,7 +23,7 @@ function parse(input) {
     }
     function skip_punc(ch) {
         if (is_punc(ch)) input.next();
-        else input.croak("מצפה לתו: \"" + ch + "\"");
+        else input.croak("expecting : \"" + ch + "\"");
     }
     function skip_kw(kw) {
         if (is_kw(kw)) input.next();
@@ -147,12 +147,12 @@ function parse(input) {
         var prog = [];
         while (!input.eof()) {
             prog.push(parse_expression());
-            if (!input.eof()) skip_punc(";");
+            if (!input.eof()) skip_punc(".");
         }
         return { type: "prog", prog: prog };
     }
     function parse_prog() {
-        var prog = delimited("{", "}", ";", parse_expression);
+        var prog = delimited("{", "}", ".", parse_expression);
         if (prog.length == 0) return FALSE;
         if (prog.length == 1) return prog[0];
         return { type: "prog", prog: prog };
@@ -163,3 +163,4 @@ function parse(input) {
         });
     }
 }
+module.exports = parse;
