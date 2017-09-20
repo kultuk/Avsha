@@ -1,11 +1,12 @@
-#AvshalomCode
+# AvshalomCode
 
 This is a scripting language in hebrew that is destined to help kids to know how to code.
+it is still very in the beginning and there's still a lot more work to be done.
 
-##Desired syntex rules:
+## Desired syntex rules:
 
 
-###variable declaration:
+### variable declaration:
 
 `
 משתנה א`
@@ -14,28 +15,35 @@ This is a scripting language in hebrew that is destined to help kids to know how
 משתנה ב שווה 4.
 `
 
-###if statement:
+### if statement:
 
 `
 אם משתנה שווה 5 אז
 `
+
 `	עשה_משהו().`
+
 `אחרת`
-	`עשה_משהו_אחר().`
+
+`	עשה_משהו_אחר().`
 
 
-###while loop:
+### while loop:
 
 `
 כלעוד בדיקת_אמת() אז
-`	`עשה_משהו();`
+`
+
+	`עשה_משהו();`
 
 
-###function declaration:
+
+### function declaration:
 
 `
 מבצע הקש_בדלת():
 `
+
 `
 הדפס("טוק טוק").
 `
