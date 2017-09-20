@@ -1,0 +1,26 @@
+{
+  "name": "avshalom-code",
+  "version": "0.0.1",
+  "description": "This is a scripting language in hebrew that is destined to help kids to know how to code. it is still in the very beginning and there's still a lot more work to be done.",
+  "main": "./Parser/avsha.js",
+  "scripts": {
+    "test": "tape specs/**/*.spec.js"
+  },
+  "bin": {
+    "avsha": "./Parser/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kultuk/AvshalomCode.git"
+  },
+  "keywords": [],
+  "author": "Sahar Zehavi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kultuk/AvshalomCode/issues"
+  },
+  "homepage": "https://github.com/kultuk/AvshalomCode#readme",
+  "devDependencies": {
+    "tape": "^4.8.0"
+  }
+}
