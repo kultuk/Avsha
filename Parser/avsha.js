@@ -1,42 +1,28 @@
-var TokenStream = require('./TokenStream.js');
-var InputStream = require('./InputStream.js');
-var parse = require('./parser.js');
-var Environment = require('./Environment.js');
-var evaluate = require('./evaluator.js');
-/* -----[ entry point for NodeJS ]----- */
+const Environment = require('./Environment.js');
+const TokenStream = require('./TokenStream.js');
+const InputStream = require('./InputStream.js');
+const evaluate = require('./evaluator.js');
+const parse = require('./parser.js');
 
-var globalEnv = new Environment();
+const createEnv = () => {
+  const env = new Environment();
 
-globalEnv.def("תזמן", function(func){
+  env.def('תזמן', function(func) {
     try {
-        console.time("תזמן");
-        return func();
+      console.time('תזמן');
+      return func();
     } finally {
-        console.timeEnd("תזמן");
+      console.timeEnd('תזמן');
     }
-});
+  });
 
-if (typeof process != "undefined") (function(){
-    var util = require("util");
-    // globalEnv.def("הדפס_לבד", function(val){
-    //     util.puts(val);
-    // });
-    globalEnv.def("הדפס", function(val){
-        // throw 'mmm'
-        console.log(val);
-    });
-    process.stdin.setEncoding("utf16le");
-    var code = process.argv[2];
-    // process.stdin.on("readable", function(){
-    //     var chunk = process.stdin.read();
-    //     if (chunk) code += chunk;
-    // });
-    // process.stdin.on("end", function(){
-    
-    // console.log(code);
-    var ast = parse(TokenStream(InputStream(code)));
-    var output = evaluate(ast, globalEnv);
-    // console.log(output);
-    // console.log(globalEnv);
-    // });
-})();
+  env.def('הדפס', console.log);
+};
+
+const evalStr = code => {
+  const env = createEnv();
+  const ast = parse(TokenStream(InputStream(code)));
+  return evaluate(ast, env);
+};
+
+module.exports = { eval: evalStr };
