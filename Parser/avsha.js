@@ -17,6 +17,7 @@ const createEnv = () => {
   });
 
   env.def('הדפס', console.log);
+  return env;
 };
 
 const evalStr = code => {
