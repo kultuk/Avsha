@@ -15,18 +15,14 @@ Environment.prototype = {
         }
     },
     get: function(name) {
-        if (name in this.vars){
+        if (name in this.vars)
             return this.vars[name];
-        }
-        throw new Error("Undeclared Variable: " + name);
-        // throw new Error("משתנה לא מוגדר: " + name);
+        throw new Error("משתנה לא מוגדר: " + name);
     },
     set: function(name, value) {
         var scope = this.lookup(name);
-        if (!scope && this.parent){   
-            throw new Error("Undeclared Variable: " + name);
-            // throw new Error("משתנה לא מוגדר: " + name);
-        }
+        if (!scope && this.parent)
+            throw new Error("משתנה לא מוגדר: " + name);
         return (scope || this).vars[name] = value;
     },
     def: function(name, value) {

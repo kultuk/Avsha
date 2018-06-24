@@ -4,7 +4,7 @@ const InputStream = require('./InputStream.js');
 const evaluate = require('./evaluator.js');
 const parse = require('./parser.js');
 
-const createEnv = function(){
+const createEnv = () => {
   const env = new Environment();
 
   env.def('תזמן', function(func) {
@@ -17,14 +17,12 @@ const createEnv = function(){
   });
 
   env.def('הדפס', console.log);
-  return env;
 };
 
-const evalStr = function(code){
+const evalStr = code => {
   const env = createEnv();
   const ast = parse(TokenStream(InputStream(code)));
   return evaluate(ast, env);
 };
 
-// evalStr('הדפס("טוק טוק")')
 module.exports = { eval: evalStr };
