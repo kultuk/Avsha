@@ -4,7 +4,7 @@ function startEditor(){
 			value: 'אם(א == 5) אזי{\n\tהדפס("שלום עולם")\n}',
 			direction: "rtl",
 			rtlMoveVisually: true,
-			// theme: 'blackboard'
+			theme: 'blackboard'
 		});
 }
 setTimeout(startEditor,500)
