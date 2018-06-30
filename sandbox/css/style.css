@@ -2,9 +2,11 @@
     height: 50px
 }
 .editor{
-    width: 50%
+    width: 50%;
 }
 
 .results{
-    width: 50%
+    border: 1px solid black;
+    width: 50%;
+    height: 200px;
 }

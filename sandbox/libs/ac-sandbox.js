@@ -8,8 +8,8 @@ function startEditor(){
             lineNumbers: true
 		});
 }
-setTimeout(startEditor,500)
+var terminal = new acTerminal(".results", true);
+setTimeout(startEditor,500);
 window.runCode.addEventListener('click',function (event){
-    alert('runt')
-
-})
+    terminal.addLine('CHEEEEESE');
+});
