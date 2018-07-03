@@ -13,9 +13,10 @@ function startEditor(){
 var terminal = new acTerminal(".results", true);
 setTimeout(startEditor,500);
 window.runCode.addEventListener('click',function (event){
+	terminal.clear();
 	try{
-    	terminal.addLine('CHEEEEESE');
-    	throw new Error('boom')
+		var output = avsha.eval(cmEditor.getValue());
+    	output && terminal.addLine(output);
 	}catch(error){
     	terminal.addError(error.message);
 	}
