@@ -11,5 +11,10 @@ function startEditor(){
 var terminal = new acTerminal(".results", true);
 setTimeout(startEditor,500);
 window.runCode.addEventListener('click',function (event){
-    terminal.addLine('CHEEEEESE');
+	try{
+    	terminal.addLine('CHEEEEESE');
+    	throw new Error('boom')
+	}catch(error){
+    	terminal.addError(error.message);
+	}
 });

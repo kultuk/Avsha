@@ -9,4 +9,8 @@
     border: 1px solid black;
     width: 50%;
     height: 200px;
+    overflow: auto;
+}
+.output-line-error{
+	color: red;
 }

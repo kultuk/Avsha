@@ -22,12 +22,18 @@ var acTerminal = (function () {
 		this.element.innerHTML = '';
 	};
 
+	acTerminal.prototype.addError = function(content) {
+		addLine(content,this.element, true);
+	};
 	acTerminal.prototype.addLine = function(content) {
 		addLine(content,this.element);
 	};
-	function addLine(content,element) {
+	function addLine(content,element, isError) {
 		var newLine = document.createElement('div');
-		newLine.classList.add('new-line');
+		newLine.classList.add('output-line');
+		if(isError){
+			newLine.classList.add('output-line-error');
+		}
 		newLine.innerText = content;
 		element.appendChild(newLine);
 	}
