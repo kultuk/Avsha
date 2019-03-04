@@ -56,6 +56,7 @@ function InputStream(input) {
         return peek() == "";
     }
     function croak(msg) {
+        console.log("line: " + line + ",  col:" + col)
         throw new Error(msg + " (" + line + ":" + col + ")");
     }
 }
@@ -465,22 +466,22 @@ module.exports = parse;
 },{}],7:[function(require,module,exports){
 var avsha = require('../../parser/avsha.js');
 var cmEditor;
-function startEditor(){
-	cmEditor = CodeMirror(window.rtlEditor, 
-		{ 
-			value: 'אם(א == 5) אזי{\n\tהדפס("שלום עולם")\n}',
-			direction: "rtl",
-			rtlMoveVisually: true,
-			theme: 'blackboard',
-            lineNumbers: true
-		});
-}
+// function startEditor(){
+// 	cmEditor = CodeMirror(window.rtlEditor, 
+// 		{ 
+//             value: 'בב = 3.\nגג = 4.',
+// 			direction: "rtl",
+// 			rtlMoveVisually: true,
+// 			theme: 'blackboard',
+//             lineNumbers: true
+// 		});
+// }
 var terminal = new acTerminal(".results", true);
-setTimeout(startEditor,500);
+// setTimeout(startEditor,500);
 window.runCode.addEventListener('click',function (event){
 	terminal.clear();
 	try{
-		var output = avsha.eval(cmEditor.getValue());
+		var output = avsha.eval(cmEditor ? cmEditor.getValue() : window.cmEditor.value);
     	output && terminal.addLine(output);
 	}catch(error){
     	terminal.addError(error.message);
