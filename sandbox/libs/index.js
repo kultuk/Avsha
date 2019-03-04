@@ -232,7 +232,7 @@ function evaluate(exp, env) {
                         evaluate(exp.right, env));
 
       case "method":
-        return make_lambda(env, exp);
+        return make_method(env, exp);
 
       case "if":
         var cond = evaluate(exp.cond, env);
@@ -284,15 +284,15 @@ function apply_op(op, a, b) {
     throw new Error("לא מכיר את הסימן " + op);
 }
 
-function make_lambda(env, exp) {
-    function lambda() {
+function make_method(env, exp) {
+    function method() {
         var names = exp.vars;
         var scope = env.extend();
         for (var i = 0; i < names.length; ++i)
             scope.def(names[i], i < arguments.length ? arguments[i] : false);
         return evaluate(exp.body, scope);
     }
-    return lambda;
+    return method;
 }
 module.exports = evaluate;
 },{}],6:[function(require,module,exports){
