@@ -64,7 +64,7 @@ module.exports = InputStream;
 },{}],3:[function(require,module,exports){
 function TokenStream(input) {
     var current = null;
-    var keywords = ["אם", "אז", "אחרת", "מבצע", "אמת", "שקר",  "עבור", "כלעוד", "מש"];
+    var keywords = ["אם", "אז", "אחרת", "פעולה", "אמת", "שקר",  "עבור", "כלעוד", "מש"];
     return {
         next  : next,
         peek  : peek,
@@ -432,7 +432,7 @@ function parse(input) {
             if (is_punc("{")) return parse_prog();
             if (is_kw("אם")) return parse_if();
             if (is_kw("אמת") || is_kw("שקר")) return parse_bool();
-            if (is_kw("מבצע")) {
+            if (is_kw("פעולה")) {
                 input.next();
                 return parse_method();
             }
