@@ -133,7 +133,7 @@ function parse(input) {
             if (is_punc("{")) return parse_prog();
             if (is_kw("אם")) return parse_if();
             if (is_kw("אמת") || is_kw("שקר")) return parse_bool();
-            if (is_kw("מבצע")) {
+            if (is_kw("פעולה")) {
                 input.next();
                 return parse_method();
             }
