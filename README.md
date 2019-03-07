@@ -1,7 +1,7 @@
 
 # AvshalomCode
 
-This is a scripting language in hebrew that is designed to help kids to learn how to code.
+This is a scripting language in hebrew that is designed to help kids learn how to code.
 
 Currently supports conditions and functions.
 
