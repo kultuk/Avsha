@@ -1,5 +1,16 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /* custom style  */
+body{
+    direction: rtl;
+}
+a.dec-less {
+    color: #159957;
+}
+
+a.dec-less:hover {
+    text-decoration: none;
+}
+/* custom style  */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
