@@ -4,7 +4,7 @@ body{
     direction: rtl;
 }
 a.dec-less {
-    color: #159957;
+    color: inherit;
 }
 
 a.dec-less:hover {
