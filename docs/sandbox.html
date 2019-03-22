@@ -22,28 +22,33 @@
     <meta name="theme-color" content="#157878">
     <link rel="stylesheet" href="/AvshalomCode/assets/css/style.css?v=996596bf8e7c698e143a7f3cfe451102a9b5bafc">
     <link rel="stylesheet" href="assets/css/style.css?v=996596bf8e7c698e143a7f3cfe451102a9b5bafc">
-        <link rel="stylesheet" href="libs/codemirror/codemirror.css">
-    <link rel="stylesheet" href="css/blackboard.css">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
   </head>
   <body>
     <section class="page-header">
-      <h1 class="project-name">אבשלוםקוד</h1>
-      <h2 class="project-tagline">שפת תכנות כשרה בעברית</h2>
-      
+      <h1 class="project-name"><a href="/AvshalomCode/index" class="dec-less">אבשלוםקוד</a></h1>
+      <h2 class="project-tagline"><a href="/AvshalomCode/index" class="dec-less">שפת תכנות כשרה בעברית</a></h2>
+      <a href="/AvshalomCode/index" class="btn">תחביר</a>
+      <!-- <a href="/AvshalomCode/sandbox" class="btn">ארגז חול</a> -->
+      <a href="/AvshalomCode/about" class="btn">אודות</a>
     </section>
 
-    <section class="main-content">
-		<h1 id="about">אודות</h1>
+    <section class="main-content sandbox-wrap">
+		  <h1 id="about">ארגז חול</h1>
 		        <div class="editor">
             <div id="rtlEditor"></div>
-            <textarea id="cmEditor" style="margin: 0px;width: 954px;height: 179px;background-color: black;color: lightgreen;">
+            <textarea id="cmEditor">
 בב = 3;
 גג = 4;
-הדפס(בב+גג)
+הדפס(בב+גג);
             </textarea>
         </div>
-        <div class="results">
+        <button id="runCode" class="runCodeBtn">הרץ!</button>
+        <h2>תוצאות</h2>
+        <div>
+          <pre class="results">
+            
+          </pre>
         </div>
       <footer class="site-footer">
 		<p>שפה זו נוצרה על ידי סהר זהבי.</p>
@@ -51,5 +56,7 @@
         <a href="https://github.com/kultuk/AvshalomCode" class="dec-less">כאן הקוד נמצא (GitHub)</a>
       </footer>
     </section>
+    <script src="/AvshalomCode/assets/js/ac-client-terminal.js"></script>
+    <script src="/AvshalomCode/assets/js/index.js"></script>
   </body>
 </html>

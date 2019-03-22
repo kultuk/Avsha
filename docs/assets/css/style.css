@@ -10,6 +10,38 @@ a.dec-less {
 a.dec-less:hover {
     text-decoration: none;
 }
+.editor{
+    width: 100%;
+}
+.runCodeBtn {
+    background-color: #155c93;
+    border-radius: 10px;
+    border-bottom-width: 0px;
+    border-style: hidden;
+    color: white;
+}
+#cmEditor{
+    margin: 0px;
+    width: 100%;
+    height: 179px;
+    color: #567482;
+    word-wrap: normal;
+    background-color: #f3f6fa;
+    border: solid 1px #dce6f0;
+}
+.results{
+    border: 1px solid black;
+    width: 100%;
+    height: 200px;
+    overflow: auto;
+}
+.output-line-error{
+    color: red;
+}
+.sandbox-wrap{
+    width: 954px;
+
+}
 /* custom style  */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");html {
     font-family: sans-serif;
@@ -510,7 +542,7 @@ a:hover {
 }
 
 .btn+.btn {
-    margin-left: 1rem
+    margin-right: 1rem
 }
 
 @media screen and (min-width: 64em) {
