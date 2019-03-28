@@ -465,23 +465,47 @@ function parse(input) {
 module.exports = parse;
 },{}],7:[function(require,module,exports){
 var avsha = require('../../parser/avsha.js');
-var cmEditor;
-// function startEditor(){
-// 	cmEditor = CodeMirror(window.rtlEditor, 
-// 		{ 
-//             value: 'בב = 3.\nגג = 4.',
-// 			direction: "rtl",
-// 			rtlMoveVisually: true,
-// 			theme: 'blackboard',
-//             lineNumbers: true
-// 		});
-// }
+var rtlSBEditor;
+// window.aceEditor;
+
+function updateLineDirection(e, renderer) {
+    var session = renderer.session;
+    var $bidiHandler = session.$bidiHandler;
+    var cells = renderer.$textLayer.$lines.cells;
+    var width = renderer.layerConfig.width - renderer.layerConfig.padding + "px";
+    cells.forEach(function(cell) {
+        var style = cell.element.style;
+        if ($bidiHandler && $bidiHandler.isRtlLine(cell.row)) {
+            style.direction = "rtl";
+            style.textAlign = "right";
+            style.width = width;
+        } else {
+            style.direction = "";
+            style.textAlign = "";
+            style.width = "";
+        }
+    });
+}
+function setRTL(aceEditor) {
+    aceEditor.session.$bidiHandler.$isRtl = true;
+    aceEditor.setOption("rtlText", false);
+    aceEditor.renderer.on("afterRender", updateLineDirection);
+    aceEditor.session.$bidiHandler.seenBidi = true;
+    aceEditor.renderer.updateFull();
+}
+function startEditor(){
+	rtlSBEditor = ace.edit("rtlEditor");
+    rtlSBEditor.setTheme("ace/theme/textmate");
+    // rtlSBEditor.setOption("rtlText",true)
+    setRTL(rtlSBEditor)
+    // editor.session.setMode("ace/mode/javascript");
+}
 var terminal = new acTerminal(".results", true);
-// setTimeout(startEditor,500);
+setTimeout(startEditor,500);
 window.runCode.addEventListener('click',function (event){
 	terminal.clear();
 	try{
-		var output = avsha.eval(cmEditor ? cmEditor.getValue() : window.cmEditor.value);
+		var output = avsha.eval(rtlSBEditor ? rtlSBEditor.getValue() : window.rtlEditor.value);
     	output && terminal.addLine(output);
 	}catch(error){
     	terminal.addError(error.message);
