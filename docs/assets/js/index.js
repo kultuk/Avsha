@@ -1,3 +1,4 @@
+
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 function Environment(parent) {
     this.vars = Object.create(parent ? parent.vars : null);
@@ -385,7 +386,7 @@ function parse(input) {
             cond: cond,
             then: then,
         };
-        if (is_kw("אז")) {
+        if (is_kw("אחרת")) {
             input.next();
             ret.else = parse_expression();
         }
@@ -465,8 +466,8 @@ function parse(input) {
 module.exports = parse;
 },{}],7:[function(require,module,exports){
 var avsha = require('../../parser/avsha.js');
-var rtlSBEditor;
-// window.aceEditor;
+// var rtlSBEditor;
+window.rtlSBEditor;
 
 function updateLineDirection(e, renderer) {
     var session = renderer.session;
@@ -493,12 +494,14 @@ function setRTL(aceEditor) {
     aceEditor.session.$bidiHandler.seenBidi = true;
     aceEditor.renderer.updateFull();
 }
+ace.config.setModuleUrl("ace/mode/avsha", "/AvshalomCode/assets/js/avsha_highlight_rules.js")
 function startEditor(){
 	rtlSBEditor = ace.edit("rtlEditor");
     rtlSBEditor.setTheme("ace/theme/textmate");
     // rtlSBEditor.setOption("rtlText",true)
     setRTL(rtlSBEditor)
-    // editor.session.setMode("ace/mode/javascript");
+    rtlSBEditor.setOption("mode", "ace/mode/avsha")
+    // rtlSBEditor.session.setMode("ace/mode/avsha");
 }
 var terminal = new acTerminal(".results", true);
 setTimeout(startEditor,500);
