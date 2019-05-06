@@ -1,6 +1,6 @@
 const Environment = require('./Environment.js');
-const TokenStream = require('./TokenStream.js');
-const InputStream = require('./InputStream.js');
+const TokenStream = require('./tokenStream.js');
+const InputStream = require('./inputStream.js');
 const evaluate = require('./evaluator.js');
 const parse = require('./parser.js');
 
