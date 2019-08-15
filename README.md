@@ -1,5 +1,5 @@
 
-# AvshalomCode
+# Avsha
 
 This is a scripting language in hebrew that is designed to help kids learn how to code.
 
@@ -26,5 +26,5 @@ Since markup doens't work well with RTL content, code snippets will be added on 
 | function | פעולה  |
 
 
-
+Previously called AvshalomCode
 Created by Sahar Zehavi.
