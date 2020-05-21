@@ -44,7 +44,7 @@ function evaluate(exp, env) {
 
 function apply_op(op, a, b) {
     function num(x) {
-        if (typeof x != "number")
+          if(typeof x != "number")  
             throw new Error("מצפה למספר אבל קיבלתי " + x);
         return x;
     }
@@ -54,7 +54,8 @@ function apply_op(op, a, b) {
         return x;
     }
     switch (op) {
-      case "+": return num(a) + num(b);
+      case "+": return (a) + (b);
+      // case "+": return num(a) + num(b);
       case "-": return num(a) - num(b);
       case "*": return num(a) * num(b);
       case "/": return num(a) / div(b);
