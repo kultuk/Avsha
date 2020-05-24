@@ -11,7 +11,7 @@ function evaluate(exp, env) {
       case "assign":
         if (exp.left.type != "var")
             throw new Error("לא יכול להכיל ערך ל" + JSON.stringify(exp.left));
-        return env.set(exp.left.value, evaluate(exp.right, env));
+        return env.def(exp.left.value, evaluate(exp.right, env));
 
       case "binary":
         return apply_op(exp.operator,
@@ -20,7 +20,13 @@ function evaluate(exp, env) {
 
       case "method":
         return make_method(env, exp);
-
+      case "let":
+          exp.vars.forEach(function(v){
+              var scope = env.extend();
+              scope.def(v.name, v.def ? evaluate(v.def, env) : false);
+              env = scope;
+          });
+          return evaluate(exp.body, env);
       case "if":
         var cond = evaluate(exp.cond, env);
         if (cond !== false) return evaluate(exp.then, env);
@@ -73,6 +79,10 @@ function apply_op(op, a, b) {
 }
 
 function make_method(env, exp) {
+    if (exp.name) {
+        // env = env.extend(); //seems redundent;
+        env.def(exp.name, method);
+    } 
     function method() {
         var names = exp.vars;
         var scope = env.extend();

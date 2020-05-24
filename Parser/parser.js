@@ -109,8 +109,39 @@ function parse(input) {
     function parse_method() {
         return {
             type: "method",
+            name: input.peek().type == "var" ? input.next().value : null,
             vars: delimited("(", ")", ",", parse_varname),
             body: parse_expression()
+        };
+    }
+    function parse_vardef() {
+        var name = parse_varname(), def;
+        if (is_op("=")) {
+            input.next();
+            def = parse_expression();
+        }
+        return { name: name, def: def };
+    }
+    function parse_var() {
+        skip_kw("מש");
+        if (input.peek().type == "var") {
+            var name = input.next().value;
+            var defs = delimited("(", ")", ",", parse_vardef);
+            return {
+                type: "call",
+                func: {
+                    type: "method",
+                    name: name,
+                    vars: defs.map(function(def){ return def.name }),
+                    body: parse_expression(),
+                },
+                args: defs.map(function(def){ return def.def || FALSE })
+            };
+        }
+        return {
+            type: "let",
+            vars: delimited("(", ")", ",", parse_vardef),
+            body: parse_expression(),
         };
     }
     function parse_bool() {
@@ -132,6 +163,7 @@ function parse(input) {
                 return exp;
             }
             if (is_punc("{")) return parse_prog();
+            if (is_kw("מש")) return parse_var();
             if (is_kw("אם")) return parse_if();
             if (is_kw("אמת") || is_kw("שקר")) return parse_bool();
             if (is_kw("פעולה")) {
