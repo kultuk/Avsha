@@ -5,6 +5,7 @@
   "main": "./Parser/avsha.js",
   "scripts": {
     "test": "tape specs/**/*.spec.js"
+    ,"avsha" : "node \"test files/run.js\""
   },
   "bin": {
     "avsha": "./Parser/cli.js"
