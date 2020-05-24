@@ -83,9 +83,20 @@ test('Conditions: else false', (t) => {
   t.end();
 });
 
-// test('Functions: return value', (t) => {
-//   var calc = avsha.eval("פעולה חיבור(){הדפס(\"תמות\")};\nחיבור();");
-//   // console.log(calc);
-//   t.equal(calc, 6);
-//   t.end();
-// });
+test('Functions: return value', (t) => {
+  var calc = avsha.eval("פעולה חיבור(ראשון,שני){ראשון+שני};\nחיבור(2,4);");
+  // console.log(calc);
+  t.equal(calc, 6);
+  t.end();
+});
+test('Site: check examples', (t) => {
+  const fs = require("fs");
+  fs.readFile('./test files/sitecodeexamples.avsha', 'utf8', function(err, code) {
+    if (err) throw err;
+    const output = avsha.eval(code);
+    t.equal(output, 4);
+    t.end();
+  });
+
+  
+});
