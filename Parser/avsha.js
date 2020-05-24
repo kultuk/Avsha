@@ -26,5 +26,4 @@ const evalStr = function(code){
   return evaluate(ast, env);
 };
 
-// evalStr('הדפס("טוק טוק")')
 module.exports = { eval: evalStr };
