@@ -99,7 +99,7 @@ function TokenStream(input) {
             type  : "op",
             value : read_while(is_op_char)
         };
-        input.croak("never heard of : " + ch);
+        input.croak("never heard of : " + ch  + "(" +ch.charCodeAt() + ")");
     }
     function peek() {
         return current || (current = read_next());
