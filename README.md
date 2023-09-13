@@ -12,9 +12,9 @@ This is still at the very beginning and there's still a lot more work to be done
 
 On the projects tab you can view all open tasks, any help will be awesome.
 
-## Syntex
+## Syntax
 
-Most of the syntex is JS oriented with a few exception:
+Most of the syntax is JS-oriented with a few exceptions:
 
  - Semicolons are required at the end of each expression.
  - The returned value of a function is the value of it's last expression
